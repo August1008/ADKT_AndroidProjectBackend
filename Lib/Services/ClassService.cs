@@ -30,6 +30,13 @@ namespace Lib.Services
         {
             return classRepository.GetClassById(Id);
         }
+
+        public string GenerateId()
+        {
+            string Id = Guid.NewGuid().ToString();
+            Id = Id.Substring(0,6);
+            return Id;
+        }
         public void AddClass(Class newClass)
         {
             dbContext.Add(newClass);

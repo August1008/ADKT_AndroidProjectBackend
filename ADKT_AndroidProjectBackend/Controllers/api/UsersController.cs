@@ -55,7 +55,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         {
             ApplicationUser newUser = new ApplicationUser()
             {
-                UserId = new Guid(),
+                UserId = Guid.NewGuid(),
                 Username = user.Username,
                 Password = user.Password,
                 UserType = user.UserType

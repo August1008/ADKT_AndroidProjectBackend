@@ -14,7 +14,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
     [ApiController]
     public class ClassesController : ControllerBase
     {
-        private ClassService classService;
+        private ClassService classService { set; get; }
 
         public ClassesController(ClassService classService)
         {
@@ -31,10 +31,25 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         {
             return Ok(new { status = true, data = classService.GetClassByTeacherId(TeacherId) });
         }
-        //[HttpPost("add-new-class")]
-        //public async Task<ActionResult> AddNewClass(ClassInsertModel classModel)
-        //{
-
-        //}
+        [HttpPost("add-new-class")]
+        public async Task<ActionResult> AddNewClass(ClassInsertModel classModel)
+        {
+            Class newClass = new Class()
+            {
+                ClassId = classService.GenerateId(),
+                startDate = classModel.startDate,
+                endDate = classModel.endDate,
+                Subject = classModel.Subject,
+                TeacherId = classModel.TeacherId
+            };
+            classService.AddClass(newClass);
+            return Ok(new { status = true, message = "successfully" });
+        }
+        [HttpDelete("delete-class")]
+        public async Task<ActionResult> DeleteClass(string ClassId)
+        {
+            classService.DeleteClass(ClassId);
+            return Ok(new { status = true, message = "" });
+        }
     }
 }
