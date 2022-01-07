@@ -34,5 +34,9 @@ namespace Lib.Services
             dbContext.Lessions.Add(lession);
             Save();
         }
+        public List<Lession> GetLessionByClassId(string classId)
+        {
+            return lessionRepository.GetLessionByClassId(classId);
+        }
     }
 }

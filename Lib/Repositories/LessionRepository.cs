@@ -11,6 +11,7 @@ namespace Lib.Repositories
         public List<Lession> GetLessionList();
         public Lession GetLessionById(int Id);
 
+        public List<Lession> GetLessionByClassId(string classId);
     }
     public class LessionRepository : RepositoryBase<Lession>, ILessionRepository
     {
@@ -28,6 +29,12 @@ namespace Lib.Repositories
         public List<Lession> GetLessionList()
         {
             var query = _dbcontext.Lessions;
+            return query.ToList();
+        }
+
+        public List<Lession> GetLessionByClassId(string classId)
+        {
+            var query = _dbcontext.Lessions.Where(l => l.ClassId == classId);
             return query.ToList();
         }
     }

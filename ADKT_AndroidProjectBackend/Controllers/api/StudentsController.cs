@@ -39,7 +39,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         public async Task<ActionResult> CreateStudent(StudentInsertModel student)
         {
             // create new person in PersonGroup
-            Task<Person> CreatePersonTask = client.PersonGroupPerson.CreateAsync("test", student.StudentId, student.Name);
+            Task<Person> CreatePersonTask = client.PersonGroupPerson.CreateAsync("adkt", student.StudentId, student.Name);
             Person person = CreatePersonTask.Result;
 
             // Verify faces in image list 
@@ -48,7 +48,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             {
                 // create a stream for every image
                 MemoryStream stream = new MemoryStream(img);
-                await client.PersonGroupPerson.AddFaceFromStreamAsync("test", person.PersonId, stream);
+                await client.PersonGroupPerson.AddFaceFromStreamAsync("adkt", person.PersonId, stream);
             }
             //Train data
             await TrainGroup(client);
@@ -74,7 +74,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         }
         public async Task TrainGroup(FaceClient client)
         {
-            await client.PersonGroup.TrainAsync("test");
+            await client.PersonGroup.TrainAsync("adkt");
             while (true)
             {
                 await Task.Delay(1000);

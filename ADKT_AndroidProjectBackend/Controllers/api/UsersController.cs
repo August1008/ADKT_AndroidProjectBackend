@@ -32,7 +32,7 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             return Ok(new { status = true, data = service.GetApplicationUserList() });
         }
 
-        [HttpGet("login")]
+        [HttpPost("login")]
         public ActionResult Login(UserModel user)
         {
             ApplicationUser loginUser = service.Login(user.Username, user.Password);
