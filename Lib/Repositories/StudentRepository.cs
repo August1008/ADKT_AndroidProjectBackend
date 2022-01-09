@@ -15,6 +15,8 @@ namespace Lib.Repositories
 
         Student GetStudentByUserId(Guid Id);
 
+        void DeleteStudent(string Id);
+
     }
 
     public class StudentRepository : RepositoryBase<Student>, IStudentRepository
@@ -43,6 +45,11 @@ namespace Lib.Repositories
         {
             var query = _dbcontext.Students.SingleOrDefault(st => st.UserId == Id);
             return query;
+        }
+        public void DeleteStudent(string Id)
+        {
+            var query = _dbcontext.Students.SingleOrDefault(st => st.StudentId == Id);
+            _dbcontext.Students.Remove(query);
         }
 
     }

@@ -33,6 +33,9 @@ namespace ADKT_AndroidProjectBackend
             services.AddTransient<ClassService>();
             services.AddTransient<ILessionRepository, LessionRepository>();
             services.AddTransient<LessionService>();
+            services.AddTransient<IEnrollmentRepository, EnrollmentRepository>();
+            services.AddTransient<EnrollmentService>();
+            
             //services.AddSingleton<ApplicationDbContext>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             

@@ -41,5 +41,11 @@ namespace Lib.Services
         {
             return userRepository.Login(Username, Password);
         }
+        public void DeleteUser(string Id)
+        {
+            ApplicationUser user = dbContext.ApplicationUsers.Find(new Guid(Id));
+            dbContext.ApplicationUsers.Remove(user);
+            Save();
+        }
     }
 }

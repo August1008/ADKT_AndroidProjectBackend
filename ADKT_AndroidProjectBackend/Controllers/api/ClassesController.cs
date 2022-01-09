@@ -1,4 +1,4 @@
-﻿using ADKT_AndroidProjectBackend.Models;
+﻿using Lib.Models;
 using Lib.Entity;
 using Lib.Services;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ADKT_AndroidProjectBackend.InsertModels;
 
 namespace ADKT_AndroidProjectBackend.Controllers.api
 {

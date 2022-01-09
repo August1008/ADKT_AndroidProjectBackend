@@ -43,5 +43,22 @@ namespace Lib.Services
         {
             return studentRepository.GetStudentByUserId(Id);
         }
+        public void DeleteStudent(string Id)
+        {
+            studentRepository.DeleteStudent(Id);
+            Save();
+        }
+        public byte[] ConvertImageStringToByte(string image)
+        {
+            
+            string[] imgArr = image.Split(",");
+            byte[] result = new byte[imgArr.Length];
+            int i = 0;
+            foreach (var index in imgArr)
+            {
+                result[i++] = Byte.Parse(index);
+            }
+            return result;
+        }
     }
 }

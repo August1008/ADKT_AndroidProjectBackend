@@ -1,4 +1,5 @@
 ﻿using Lib.Entity;
+using Lib.Models;
 using Lib.Repositories;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,10 @@ namespace Lib.Services
         {
             dbContext.Enrollments.Add(enrollment);
             Save();
+        }
+        public List<EnrollmentModel> GetEnrollmentsBystudentId(string studentId)
+        {
+            return enrollmentRepository.GetEnrollmentBystudentId(studentId);
         }
     }
 }

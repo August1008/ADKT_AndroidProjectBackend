@@ -1,4 +1,4 @@
-﻿using ADKT_AndroidProjectBackend.Models;
+﻿using Lib.Models;
 using Lib.Entity;
 using Lib.Services;
 using Microsoft.AspNetCore.Http;
@@ -62,6 +62,12 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             };
             service.AddUser(newUser);
             return Ok(new { status = true, message = "" });
+        }
+        [HttpDelete("delete")]
+        public async Task<ActionResult> DeleteUser(string Id)
+        {
+            service.DeleteUser(Id);
+            return Ok(new { status = true, message = "successfully" });
         }
     }
 }
