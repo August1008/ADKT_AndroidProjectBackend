@@ -29,5 +29,9 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         {
             return Ok(enrollmentService.GetEnrollmentsBystudentId(studentId));
         }
+
+
+        // lay danh sach enrollment bang classId
+        
     }
 }
