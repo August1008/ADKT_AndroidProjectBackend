@@ -36,9 +36,15 @@ namespace Lib.Services
             dbContext.Enrollments.Add(enrollment);
             Save();
         }
+
         public List<EnrollmentModel> GetEnrollmentsBystudentId(string studentId)
         {
             return enrollmentRepository.GetEnrollmentBystudentId(studentId);
+        }
+
+        public List<EnrollmentModel> GetEnrollmentByClassId(string classId)
+        {
+            return enrollmentRepository.GetEnrollmentByClassId(classId);
         }
     }
 }

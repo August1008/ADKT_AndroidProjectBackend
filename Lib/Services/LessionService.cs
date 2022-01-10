@@ -34,6 +34,14 @@ namespace Lib.Services
             dbContext.Lessions.Add(lession);
             Save();
         }
+
+        public string GenerateId()
+        {
+            string Id = Guid.NewGuid().ToString();
+            Id = Id.Substring(0, 6);
+            return Id;
+        }
+
         public List<Lession> GetLessionByClassId(string classId)
         {
             return lessionRepository.GetLessionByClassId(classId);

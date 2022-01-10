@@ -13,5 +13,7 @@ namespace Lib.Models
         public string startDate { set; get; }
         public string endDate { set; get; }
         public string teacherName { set; get; }
+        public string studentName { set; get; }
+        public string studentId { set; get; }
     }
 }

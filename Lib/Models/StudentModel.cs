@@ -13,6 +13,6 @@ namespace Lib.Models
         public string Email { set; get; }
         public Guid UserId { set; get; }
         public Guid PersonId { set; get; }
-       // public List<Enrollment> enrollments { set; get; }
+        //public List<Enrollment> enrollments { set; get; }
     }
 }

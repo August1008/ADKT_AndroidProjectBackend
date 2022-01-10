@@ -99,11 +99,18 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             return Ok(new { status = true, message = "Successfully" });
         }
 
-        //[HttpPost("enroll")]
-        //public async Task<ActionResult> EnrollClass(string classId,string studentId)
-        //{
-
-        //}
+        [HttpPost("enroll")]
+        public async Task<ActionResult> EnrollClass(string classId,string studentId)
+        {
+            Enrollment enrollment = new Enrollment
+            {
+                //EnrollmentId = (new Random().Next()),
+                ClassId = classId,
+                StudentId = studentId
+            };
+            enrollmentService.AddEnrollment(enrollment);
+            return Ok(new { status = true, message = "successfully" });
+        }
 
         public async Task TrainGroup(FaceClient client)
         {

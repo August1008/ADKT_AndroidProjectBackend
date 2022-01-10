@@ -15,7 +15,7 @@ namespace Lib.Repositories
         public List<Enrollment> GetEnrollmentList();
         public Enrollment GetErmById(int Id);
         public List<EnrollmentModel> GetEnrollmentBystudentId(string studentId);
-
+        public List<EnrollmentModel> GetEnrollmentByClassId(string classId);
     }
 
     public class EnrollmentRepository : RepositoryBase<Enrollment>, IEnrollmentRepository
@@ -53,6 +53,24 @@ namespace Lib.Repositories
             return query.ToList();
         }
 
+        public List<EnrollmentModel> GetEnrollmentByClassId(string classId)
+        {
+            var query = from e in _dbcontext.Enrollments
+                        join c in _dbcontext.Classes on e.ClassId equals c.ClassId
+                        join t in _dbcontext.Students on e.StudentId equals t.StudentId
+                        where e.ClassId == classId
+                        select new EnrollmentModel
+                        {
+                            classId = c.ClassId,
+                            subject = c.Subject,
+                            teacherName = t.Name,
+                            startDate = c.startDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
+                            endDate = c.endDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
+                            studentName = t.Name,
+                            studentId = t.StudentId
+                        };
+            return query.ToList();
+        }
     }
 
 }
