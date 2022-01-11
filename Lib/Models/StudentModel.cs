@@ -9,7 +9,7 @@ namespace Lib.Models
     {
         public string StudentId { set; get; }
         public string Name { set; get; }
-        public DateTime birthDay { set; get; }
+        public string birthDay { set; get; }
         public string Email { set; get; }
         public Guid UserId { set; get; }
         public Guid PersonId { set; get; }

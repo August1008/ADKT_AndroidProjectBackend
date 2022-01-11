@@ -37,16 +37,19 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         {
             ApplicationUser loginUser = service.Login(user.Username, user.Password);
             if (loginUser == null)
-                return Ok();
+                return Ok(new
+                {
+                    message = "fail"
+                });
             if (user.UserType == UserModel.STUDENT)
             {
                 Student student = studentService.GetStudentByUserId(loginUser.UserId);
-                return Ok(student);
+                return Ok(new { message = "student has no exist", student = student });
             }
             else
             {
                 Teacher teacher = teacherService.GetTeacherByUserId(loginUser.UserId);
-                return Ok(teacher);
+                return Ok(new { message = "teacher has no exist", teacher = teacher });  
             }
         }
 

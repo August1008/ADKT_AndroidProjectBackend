@@ -63,7 +63,6 @@ namespace Lib.Repositories
                         {
                             classId = c.ClassId,
                             subject = c.Subject,
-                            teacherName = t.Name,
                             startDate = c.startDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
                             endDate = c.endDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
                             studentName = t.Name,

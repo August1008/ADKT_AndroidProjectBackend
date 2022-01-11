@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ADKT_AndroidProjectBackend.InsertModels;
+using System.Globalization;
 
 namespace ADKT_AndroidProjectBackend.Controllers.api
 {
@@ -28,9 +29,9 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             return Ok(new { status = true, data = classService.GetClassList() });
         }
         [HttpGet("get-class-list-teacherid")]
-        public async Task<ActionResult> GetClassListByTeacherId(string TeacherId)
+        public async Task<ActionResult> GetClassListByTeacherId(string teacherId)
         {
-            return Ok(new { status = true, data = classService.GetClassByTeacherId(TeacherId) });
+            return Ok(classService.GetClassByTeacherId(teacherId));
         }
         [HttpPost("add-new-class")]
         public async Task<ActionResult> AddNewClass(ClassInsertModel classModel)
@@ -38,8 +39,8 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             Class newClass = new Class()
             {
                 ClassId = classService.GenerateId(),
-                startDate = classModel.startDate,
-                endDate = classModel.endDate,
+                startDate = DateTime.Parse(classModel.startDate, CultureInfo.InvariantCulture),
+                endDate = DateTime.Parse(classModel.startDate, CultureInfo.InvariantCulture),
                 Subject = classModel.Subject,
                 TeacherId = classModel.TeacherId
             };

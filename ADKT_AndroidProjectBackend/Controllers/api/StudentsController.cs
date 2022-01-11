@@ -59,6 +59,10 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
             var birthday = HttpContext.Request.Form["birthday"];
             var studentid = HttpContext.Request.Form["studentid"];
 
+            if(studentService.GetStudentById(studentid) == null)
+            {
+                return Ok(new { status = true, message = "StudentId already exists" });
+            }
             // tao 1 person mới 
             Task<Person> CreatePersonTask = client.PersonGroupPerson.CreateAsync("adkt", studentid.ToString(), name.ToString());
             Person person = CreatePersonTask.Result;

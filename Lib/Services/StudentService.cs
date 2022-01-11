@@ -1,4 +1,5 @@
 ﻿using Lib.Entity;
+using Lib.Models;
 using Lib.Repositories;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Lib.Services
         {
             return studentRepository.GetStudentById(Id);
         }
-        public Student GetStudentByPersonId(Guid personId)
+        public StudentModel GetStudentByPersonId(Guid personId)
         {
             return studentRepository.GetStudentByPersonId(personId);
         }

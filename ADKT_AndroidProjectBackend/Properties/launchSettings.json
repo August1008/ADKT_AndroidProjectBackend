@@ -7,7 +7,7 @@
       "sslPort": 44332
     },
     "iis": {
-      "applicationUrl": "http://127.0.0.1:8085"
+      "applicationUrl": "http://127.0.0.1:8083"
     }
   },
   
@@ -22,7 +22,7 @@
     "Local IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://127.0.0.1:8085",
+      "launchUrl": "http://127.0.0.1:8083",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

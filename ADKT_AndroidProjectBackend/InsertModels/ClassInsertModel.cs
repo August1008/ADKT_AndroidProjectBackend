@@ -9,8 +9,8 @@ namespace ADKT_AndroidProjectBackend.InsertModels
     {
         public string ClassId { set; get; }
         public string Subject { set; get; }
-        public DateTime startDate { set; get; }
-        public DateTime endDate { set; get; }
+        public string startDate { set; get; }
+        public string endDate { set; get; }
         public string TeacherId { set; get; }
 
     }

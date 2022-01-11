@@ -1,7 +1,9 @@
 ﻿using Lib.Data;
 using Lib.Entity;
+using Lib.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -11,11 +13,13 @@ namespace Lib.Repositories
     {
         List<Student> GetStudentList();
         Student GetStudentById(string Id);
-        Student GetStudentByPersonId(Guid personId);
+        StudentModel GetStudentByPersonId(Guid personId);
 
         Student GetStudentByUserId(Guid Id);
 
         void DeleteStudent(string Id);
+
+        
 
     }
 
@@ -36,10 +40,17 @@ namespace Lib.Repositories
             var query = _dbcontext.Students.SingleOrDefault(st=>st.StudentId == Id);
             return query;
         }
-        public Student GetStudentByPersonId(Guid personId)
+        public StudentModel GetStudentByPersonId(Guid personId)
         {
             var query = _dbcontext.Students.SingleOrDefault(st => st.PersonId == personId);
-            return query;
+            return new StudentModel
+            {
+                StudentId = query.StudentId,
+                Email = query.Email,
+                birthDay = query.birthDay.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
+                Name = query.Name,
+                PersonId = query.PersonId
+            };
         }
         public Student GetStudentByUserId(Guid Id)
         {
@@ -51,6 +62,6 @@ namespace Lib.Repositories
             var query = _dbcontext.Students.SingleOrDefault(st => st.StudentId == Id);
             _dbcontext.Students.Remove(query);
         }
-
+        
     }
 }
