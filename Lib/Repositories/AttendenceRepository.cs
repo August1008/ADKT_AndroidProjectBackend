@@ -12,6 +12,8 @@ namespace Lib.Repositories
     public interface IAttendenceRepository : IRepository<Attendence>
     {
         public List<AttendenceModel> GetAttendenceByLessionId(int lessionId);
+        public List<AttendenceModel> GetAttendenceByEnrollmentId(int enrollmentId);
+        public int MaxLessionId();
     }
     public class AttendenceRepository : RepositoryBase<Attendence>, IAttendenceRepository
     {
@@ -36,6 +38,23 @@ namespace Lib.Repositories
                             Status = a.Status
                         };
             return query.ToList();
+        }
+
+        public List<AttendenceModel> GetAttendenceByEnrollmentId(int enrollmentId)
+        {
+            var query = from a in _dbcontext.Attendences
+                        where a.EnrollmentId == enrollmentId
+                        select new AttendenceModel
+                        {
+                            LessionId = a.LessionId,
+                            Status = a.Status
+                        };
+            return query.ToList();
+        }
+        public int MaxLessionId()
+        {
+            int max = _dbcontext.Lessions.Max(l => l.LessionId);
+            return max;
         }
     }
 }

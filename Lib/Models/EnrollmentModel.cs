@@ -15,5 +15,6 @@ namespace Lib.Models
         public string teacherName { set; get; }
         public string studentName { set; get; }
         public string studentId { set; get; }
+        public string enrollmentId { set; get; }
     }
 }

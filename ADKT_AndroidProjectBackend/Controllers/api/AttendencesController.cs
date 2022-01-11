@@ -24,5 +24,11 @@ namespace ADKT_AndroidProjectBackend.Controllers.api
         {
             return Ok(attendenceService.GetAttendenceByLessionId(lessionId));
         }
+
+        [HttpGet("get-attendance-by-enrollmentid")]
+        public async Task<ActionResult> GetAttendanceByEnrollmentId(int enrollmentId)
+        {
+            return Ok(attendenceService.GetAttendenceByEnrollmentId(enrollmentId));
+        }
     }
 }

@@ -61,6 +61,7 @@ namespace Lib.Repositories
                         where e.ClassId == classId
                         select new EnrollmentModel
                         {
+                            enrollmentId = e.EnrollmentId.ToString(),
                             classId = c.ClassId,
                             subject = c.Subject,
                             startDate = c.startDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),

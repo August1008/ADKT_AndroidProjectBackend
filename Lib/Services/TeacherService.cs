@@ -40,5 +40,10 @@ namespace Lib.Services
         {
             return teacherRepository.GetTeacherByUserId(Id);
         }
+
+        public void AttendanceStudent(List<Guid> studentList)
+        {
+
+        }
     }
 }

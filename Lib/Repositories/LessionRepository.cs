@@ -12,6 +12,7 @@ namespace Lib.Repositories
         public Lession GetLessionById(int Id);
 
         public List<Lession> GetLessionByClassId(string classId);
+        public int MaxLessionId();
     }
     public class LessionRepository : RepositoryBase<Lession>, ILessionRepository
     {
@@ -36,6 +37,12 @@ namespace Lib.Repositories
         {
             var query = _dbcontext.Lessions.Where(l => l.ClassId == classId);
             return query.ToList();
+        }
+
+        public int MaxLessionId()
+        {
+            int max = _dbcontext.Lessions.Max(l => l.LessionId);
+            return max;
         }
     }
 }
